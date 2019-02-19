@@ -31,25 +31,25 @@ const onRequest = (request, response) => {
       } else if (parsedUrl.pathname === '/style.css') {
         // if stylesheet, send stylesheet
         htmlHandler.getCSS(request, response);
-      } else if (parsedUrl.pathname === '/getUsers') {
+      } else if (parsedUrl.pathname === '/getIOUs') {
         // if get users, send user object back
-        jsonHandler.getUsers(request, response);
+        jsonHandler.getIOUs(request, response);
       } else {
         // if not found, send 404 message
-        jsonHandler.notReal(request, response);
+        jsonHandler.notFound(request, response);
       }
       break;
     case 'HEAD':
-      if (parsedUrl.pathname === '/getUsers') {
+      if (parsedUrl.pathname === '/getIOUs') {
         // if get users, send meta data back
-        jsonHandler.getUsersMeta(request, response);
+        jsonHandler.getIOUsMeta(request, response);
       } else {
         // if not found send 404 without body
-        jsonHandler.notRealMeta(request, response);
+        jsonHandler.notFoundMeta(request, response);
       }
       break;
     case 'POST':
-      if (parsedUrl.pathname === '/addUser') {
+      if (parsedUrl.pathname === '/addIOU') {
         const res = response;
         const body = [];
         // if the upload stream errors out, just throw a
@@ -77,14 +77,14 @@ const onRequest = (request, response) => {
           const bodyParams = query.parse(bodyString);
 
           // pass to our addUser function
-          jsonHandler.addUser(request, res, bodyParams);
+          jsonHandler.addIOU(request, res, bodyParams);
         });
       } else {
-        jsonHandler.notReal(request, response);
+        jsonHandler.notFound(request, response);
       }
       break;
     default:
-      jsonHandler.notReal(request, response);
+      jsonHandler.notFound(request, response);
   }
 };
 

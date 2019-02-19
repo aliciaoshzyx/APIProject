@@ -9,21 +9,43 @@
     const handleResponse = (xhr, parseResponse) => {
 
       const content = document.querySelector('#content');
-      const h1 = document.querySelector('h1');
-      const p = document.querySelector('p');
+      
+      
       //if its JSON
-      if(parseResponse){
-        console.log('in parse');
-        const obj = JSON.parse(xhr.response);
-        console.log(obj);
-        if(obj.id)
-          h1.textContent = obj.id;
-        if(obj.message)
-          p.textContent = obj.message;
-        if(obj.users){
-          h1.textContent = obj.message;
-          p.textContent = JSON.stringify(obj.users);
-        }
+      if (xhr.status == 204){
+        p.textContent = "Updated (no content)";
+      }  else if(parseResponse){
+          const obj = JSON.parse(xhr.response);
+          if(obj.IOUs){
+            console.log("in IOUs");
+          const IOUs = obj.IOUs;
+          for(var property in IOUs){
+            const span = document.createElement('span')
+            if(IOUs.hasOwnProperty(property)){
+              let name = document.createElement('p');
+              let otherName = document.createElement('p');
+              let ammount = document.createElement('p');
+              let why = document.createElement('p');
+              let when = document.createElement('p');
+              //console.log(property); //Ticket
+              console.log(IOUs[property]); //Objcet on ticket
+              //console.log(IOUs[property].name); //bob
+              name.textContent = IOUs[property].name;
+              otherName.textContent = IOUs[property].otherName;
+              ammount.textContent = IOUs[property].ammount;
+              why.textContent = property;
+              when.textContent = IOUs[property].when;
+
+              span.appendChild(name);
+              span.appendChild(otherName);
+              span.appendChild(ammount);
+              span.appendChild(why);
+              span.appendChild(when);
+            }
+            content.appendChild(span);
+          }
+          
+          }
       } else {
         console.log('recieved');
       }
@@ -37,7 +59,7 @@
       if(form.querySelector('#urlField')){
         url = form.querySelector('#urlField').value;}
       else{
-        url = '/addUser';}
+        url = '/addIOU';}
       
       let method;
       //grab method selected
@@ -62,7 +84,9 @@
       } else if ( method == 'head'){
         xhr.onload = () => handleResponse(xhr, false);
       }
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
+      const formData = `name=${nameField.value}
+      &oname=${oNameField.value}&ammount=${ammountField.value}
+      &when=${dateField.value}&why=${whyField.value}`;
 
       //send ajax request
       xhr.send(formData);
@@ -75,22 +99,18 @@
     const init = () => {
 
       //for display
-      const h1 = document.createElement('h1');
-      const p = document.createElement('p');
-      content.appendChild(h1);
-      content.appendChild(p);
 
       //grab selects and button
-      const nameForm = document.querySelector('#nameForm');
-      const userForm = document.querySelector('#userForm');
+      const moneyForm = document.querySelector('#moneyForm');
+      const getForm = document.querySelector('#getForm');
 
       //function to handle our request
-      const addUsers = (e) => requestUpdate(e, nameForm);
-      const getUsers = (e) => requestUpdate(e, userForm);
+      const addIOUs = (e) => requestUpdate(e, moneyForm);
+      const getIOUs = (e) => requestUpdate(e, getForm);
       
       //add event listener
-      nameForm.addEventListener('submit', addUsers);
-      userForm.addEventListener('submit', getUsers)
+      moneyForm.addEventListener('submit', addIOUs);
+      getForm.addEventListener('submit', getIOUs)
     };
 
     window.onload = init;
@@ -99,23 +119,37 @@
 <body>
   <section id="top">
     <h3>POST Status Code Tests</h3>
-    <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
+    <form id="moneyForm" action="/addIOU" method="post">
+
+
+      <label for="name">Your Name: </label>
       <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-      <input type="submit" value="Add User" />
+
+      <label for="owesName">Who Owes You: </label>
+      <input id="oNameField" type="text" name="oName" />
+
+
+      <label for="ammount">How Much Do They Owe: </label>
+      <input id="ammountField" type="number" name="ammount" step="1"/>
+
+      <label for="when">When do they owe it to you by? (optional): </label>
+      <input id="dateField" type="date" name="date">
+
+      <label for="why">What do they owe you for?: </label>
+      <input id="whyField" type="text" name = "why"/>
+
+      <input type="submit" value="Add IOU" />
     </form>
-    <form id="userForm" action="/getUsers" method="get">
+    <form id="getForm" action="/getIOUs" method="get">
       <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
-        <option value='/notReal'>/notReal</option>
+        <option value='/getIOUs'>/getIOUs</option>
+        <option value='/notFound'>/notFound</option>
       </select>
       <select id="methodSelect">
         <option value="get">GET</option>
         <option value="head">HEAD</option>
       </select>
-      <input type="submit" value="Get User" />
+      <input type="submit" value="Get IOUs" />
     </form>
   </section>
   <section id="content">
