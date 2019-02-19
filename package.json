@@ -1,0 +1,22 @@
+{
+  "name": "apiassignment2",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "6.4.0"
+  },
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests Complete\""
+  },
+  "author": "Alicia Pankratz",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
