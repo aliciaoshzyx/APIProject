@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Our simple HTTP server</title>
+  <title>IOU API</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
@@ -9,7 +9,7 @@
     const handleResponse = (xhr, parseResponse) => {
 
       const content = document.querySelector('#content');
-      
+      content.innerHTML = "";
       
       //if its JSON
       if (xhr.status == 204){
@@ -20,7 +20,7 @@
             console.log("in IOUs");
           const IOUs = obj.IOUs;
           for(var property in IOUs){
-            const span = document.createElement('span')
+            const div = document.createElement('div')
             if(IOUs.hasOwnProperty(property)){
               let name = document.createElement('p');
               let otherName = document.createElement('p');
@@ -36,13 +36,13 @@
               why.textContent = property;
               when.textContent = IOUs[property].when;
 
-              span.appendChild(name);
-              span.appendChild(otherName);
-              span.appendChild(ammount);
-              span.appendChild(why);
-              span.appendChild(when);
+              div.appendChild(name);
+              div.appendChild(otherName);
+              div.appendChild(ammount);
+              div.appendChild(why);
+              div.appendChild(when);
             }
-            content.appendChild(span);
+            content.appendChild(div);
           }
           
           }
@@ -117,8 +117,8 @@
   </script>
 </head>
 <body>
+  <h2 id="title">IOU</h2>
   <section id="top">
-    <h3>POST Status Code Tests</h3>
     <form id="moneyForm" action="/addIOU" method="post">
 
 
@@ -126,7 +126,7 @@
       <input id="nameField" type="text" name="name" />
 
       <label for="owesName">Who Owes You: </label>
-      <input id="oNameField" type="text" name="oName" />
+      <input  id="oNameField"  type="text" name="oName" />
 
 
       <label for="ammount">How Much Do They Owe: </label>
