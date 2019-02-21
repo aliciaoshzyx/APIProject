@@ -73,7 +73,7 @@ const addIOU = (request, response, body) => {
   IOUs[body.why].name = body.name;
   IOUs[body.why].otherName = body.oname;
   IOUs[body.why].ammount = body.ammount;
-  if(body.when != "")
+  if(body.when !== "")
     IOUs[body.why].when = body.when;
   else
     IOUs[body.why].when = "Anytime"; //default for if date is not given
