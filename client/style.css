@@ -3,27 +3,47 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #c4f3e1;
+  font-family: 'Fredericka the Great', cursive;
 }
 
 #title{
   font-size: 2em;
+  background: white;
+  margin-left: 10%;
+  margin-right:10%;
+  text-align: center;
 }
 
 #top {
-  text-align: center;
   margin: 0 auto;
 }
 
 form{
-  width: 50%;
-  margin-left:25%;
+  width: 600px;
+  margin-left:2%;
   border-style: solid;
   border-color:black;}
 
 form input, form label{
-  display: block;
+  
   margin-bottom:8px;
+}
+
+#yourName{
+  padding-top: 2em;
+  text-align:left;
+
+}
+
+input[type=text]{
+  border: none;
+  border-bottom: 2px solid black;
+  background: #c4f3e1; 
+}
+
+input[type=text]:focus{
+  outline:none;
 }
 
 #top h1 {
@@ -35,7 +55,7 @@ form input, form label{
   font-size: 2em;
 }
 
-div {
+#content div {
   background: aquamarine;
   margin: 10px;
   border-style: solid;

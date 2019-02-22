@@ -3,8 +3,7 @@
 <head>
   <title>IOU API</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
     const handleResponse = (xhr, parseResponse) => {
 
@@ -121,23 +120,23 @@
   <section id="top">
     <form id="moneyForm" action="/addIOU" method="post">
 
-
-      <label for="name">Your Name: </label>
-      <input id="nameField" type="text" name="name" />
-
-      <label for="owesName">Who Owes You: </label>
-      <input  id="oNameField"  type="text" name="oName" />
-
-
-      <label for="ammount">How Much Do They Owe: </label>
+      <div id="yourName">
+      <label id="namelabel" for="name">Pay to the Order Of: </label>
+      <input id="nameField" type="text" name="name" size=75/>
+    </div>
+      <label for="ammount">$: </label>
       <input id="ammountField" type="number" name="ammount" step="1"/>
 
-      <label for="when">When do they owe it to you by? (optional): </label>
+      <label for="why">For: </label>
+      <input id="whyField" type="text" name = "why"/>
+ 
+      <label for="when">Due By (optional): </label>
       <input id="dateField" type="date" name="date">
 
-      <label for="why">What do they owe you for?: </label>
-      <input id="whyField" type="text" name = "why"/>
+      <label for="owesName">Signed: </label>
+      <input  id="oNameField"  type="text" name="oName" />
 
+      
       <input type="submit" value="Add IOU" />
     </form>
     <form id="getForm" action="/getIOUs" method="get">
