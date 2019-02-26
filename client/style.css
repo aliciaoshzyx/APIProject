@@ -3,12 +3,14 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
-  font-family: 'Lato', sans-serif;}
+  background: #F4F4F4;
+  font-family: 'Lato', sans-serif;
+  color:#F4F4F4;
+}
 
 #title{
   font-size: 2em;
-  background: #FFFFFF;
+  background: #373737;
   margin-left: 10%;
   margin-right:10%;
   text-align: center;
@@ -26,29 +28,29 @@ input{
 
 #moneyForm{
   width: 600px;
-  margin-left:10%;
+  margin: 0 auto;
   border-style: solid;
   border-color:black;
   padding-bottom:1em;
   padding-left: 1em;
-  background:#c4f3e1;
+  background:#DCD0C0;
   outline-offset:10px;
-  outline-color:#c4f3e1;
+  outline-color:#DCD0C0;
   outline-width:2em;
 }
 
 #moneyForm input[type=submit]{
-  background-color: #c4f3e1;
+  background-color: #DCD0C0;
   margin-top: 1em;
   margin-left:500px;
   border-radius:12px;
-  border: 2px solid #A7DBC7;
+  border: 2px solid #C0B283;
   transition-duration: 0.4s;
   
 }
 
 #moneyForm input[type=submit]:hover{
-  background-color:#FFFFFF;
+  background-color:white;
 }
 
 #getForm{
@@ -58,7 +60,7 @@ input{
 
 #getForm input[type=submit]{
   border-radius:12px;
-  border: 2px solid #A7DBC7;
+  border: 2px solid #C0B283;
 }
 
 form input, form label{
@@ -86,7 +88,7 @@ form input, form label{
 input[type=text], input[type=number], input[type=date]{
   border: none;
   border-bottom: 2px solid black;
-  background: #c4f3e1; 
+  background: #DCD0C0; 
 }
 
 input[type=text]:focus, input[type=number]:focus, input[type=date]:focus{
@@ -112,13 +114,109 @@ input[type=date]{
 #content{
   display: flex;
   flex-direction: row;
-  overflow: scroll;
+  flex-wrap: wrap;
 }
 
 #content div {
-  width: 25%;
-  margin: 10px;
+  width: 400px;
+  font-family: 'Caveat Brush', cursive;
   text-align: center;
-  border-style: solid;
-  outline-color: "black" ;
+}
+
+#outerDiv{
+  display:flex;
+  flex-direction: column;
+  margin:1em;
+  background:#373737;
+  border-radius:12px;
+}
+
+#row1{
+  display:flex;
+  height:2.5em;
+}
+
+#iouBox{
+  flex-grow:1;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 2em;
+  height: 2em;
+  margin: 0;
+  margin-top: -0.65em;
+  border-radius:12px;
+}
+
+#ammountBox{
+  flex-grow: 1;
+  background: #C0B283;
+  padding: 2px;
+  padding-top:10px;
+  margin:7px;
+  justify-content:center;
+  border-radius:12px;
+
+}
+
+#whenBox{
+  flex-grow: 1;
+  background: #C0B283;
+  padding-top:10px;
+  margin: 7px;
+  border-radius:12px;
+}
+
+#row2{
+
+}
+
+#whyBox{
+  text-align: left;
+  margin:0;
+  background: #C0B283;
+  margin: 7px;
+  padding-left:10px;
+  border-radius:12px;
+}
+
+#row3{
+  display:flex;
+}
+
+#lendDivBox{
+  background: #C0B283;
+  margin: 7px;
+  height:3em;
+  border-radius:12px;
+}
+
+#lenderBox{
+  font-size: 0.5em;
+  text-align:left;
+  padding-left:10px;
+  padding-top:5px;
+  margin:0;
+}
+
+#debtDivBox{
+  background: #C0B283;
+  margin: 7px;
+  height:3em;
+  border-radius:12px;
+}
+#nameBox{
+  margin:5px;
+}
+
+#debtorBox{
+  font-size: 0.5em;
+  text-align:left;
+  padding-left:10px;
+  padding-top:5px;
+  margin:0;
+}
+#otherNameBox{
+  margin:5px;
+}
+
+div p {
 }

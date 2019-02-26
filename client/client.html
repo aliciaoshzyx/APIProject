@@ -3,8 +3,7 @@
 <head>
   <title>IOU API</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Caveat|Lato" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Caveat|Caveat+Brush|Lato" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
     const handleResponse = (xhr, parseResponse) => {
@@ -14,34 +13,73 @@
       
       //if its JSON
       if (xhr.status == 204){
-        p.textContent = "Updated (no content)";
+        
       }  else if(parseResponse){
           const obj = JSON.parse(xhr.response);
           if(obj.IOUs){
             console.log(JSON.stringify(obj.IOUs));
           const IOUs = obj.IOUs;
           for(var property in IOUs){
-            const div = document.createElement('div')
+            const div = document.createElement('div');
+            div.setAttribute("id", "outerDiv");
             if(IOUs.hasOwnProperty(property)){
-              let name = document.createElement('p');
-              let otherName = document.createElement('p');
+              let row1 = document.createElement('div');
+              let row2 = document.createElement('div');
+              let row3 = document.createElement('div');
+              row1.setAttribute("id", "row1");
+              row2.setAttribute("id", "row2");
+              row3.setAttribute("id", "row3");
+              let iou = document.createElement('p');
+              iou.setAttribute("id", "iouBox");
               let ammount = document.createElement('p');
-              let why = document.createElement('p');
+              ammount.setAttribute("id", "ammountBox");
               let when = document.createElement('p');
+              when.setAttribute("id", "whenBox");
+              let why = document.createElement('p');
+              why.setAttribute("id", "whyBox");
+              let lendDiv = document.createElement('div');
+              lendDiv.setAttribute("id", "lendDivBox");
+              let lender = document.createElement('p');
+              lender.setAttribute("id", "lenderBox");
+              let name = document.createElement('p');
+              name.setAttribute("id", "nameBox");
+              let debtDiv = document.createElement('div');
+              debtDiv.setAttribute("id", "debtDivBox");
+              let debtor = document.createElement('p');
+              debtor.setAttribute("id", "debtorBox");
+              let otherName = document.createElement('p');
+              otherName.setAttribute("id", "otherNameBox");
               //console.log(property); //Ticket
               console.log(IOUs[property]); //Objcet on ticket
               //console.log(IOUs[property].name); //bob
+              iou.textContent = "IOU";
+              lender.textContent = "Lender";
+              debtor.textContent = "Debtor"
               name.textContent = IOUs[property].name;
-              otherName.textContent = "Owed by: " + IOUs[property].otherName;
+              otherName.textContent = IOUs[property].otherName;
               ammount.textContent = "$" + IOUs[property].ammount;
               why.textContent = "For: " +property;
               when.textContent = "Due by: " +IOUs[property].when;
+              
+              lendDiv.appendChild(lender);
+              lendDiv.appendChild(name);
 
-              div.appendChild(name);
-              div.appendChild(otherName);
-              div.appendChild(ammount);
-              div.appendChild(why);
-              div.appendChild(when);
+              debtDiv.appendChild(debtor);
+              debtDiv.appendChild(otherName);
+
+              row1.appendChild(iou);
+              row1.appendChild(ammount);
+              row1.appendChild(when);
+
+              row2.appendChild(why);
+
+              row3.appendChild(lendDiv);
+              row3.appendChild(debtDiv);
+             
+
+              div.appendChild(row1);
+              div.appendChild(row2);
+              div.appendChild(row3);
             }
             content.appendChild(div);
           }
