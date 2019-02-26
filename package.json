@@ -10,13 +10,15 @@
   "scripts": {
     "start": "node ./src/server.js",
     "pretest": "eslint ./src --fix",
-    "test": "echo \"Tests Complete\""
+    "test": "echo \"Tests Complete\"",
+    "nodemon": "nodemon -e js,html,css --watch ./src ./src/server.js --watch ./client"
   },
   "author": "Alicia Pankratz",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
   }
 }

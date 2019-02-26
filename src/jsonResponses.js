@@ -1,4 +1,6 @@
-const IOUs = {};
+const IOUs = {
+  "Ticket":{"why":"Ticket","name":"Bob","otherName":"Adrian","ammount":"3","when":"Anytime"},
+};
 
 // function to respond with a json object
 // takes request, response, status code and object to send
