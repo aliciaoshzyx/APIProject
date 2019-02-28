@@ -35,6 +35,10 @@
               ammount.setAttribute("id", "ammountBox");
               let when = document.createElement('p');
               when.setAttribute("id", "whenBox");
+              let whenDiv = document.createElement('div');
+              whenDiv.setAttribute("id", "whenDiv");
+              let whenTitle = document.createElement('p')
+              whenTitle.setAttribute("id", "whenTitle");
               let why = document.createElement('p');
               why.setAttribute("id", "whyBox");
               let lendDiv = document.createElement('div');
@@ -59,7 +63,8 @@
               otherName.textContent = IOUs[property].otherName;
               ammount.textContent = "$" + IOUs[property].ammount;
               why.textContent = "For: " +property;
-              when.textContent = "Due by: " +IOUs[property].when;
+              whenTitle.textContent = "Due by: "
+              when.textContent = IOUs[property].when;
               
               lendDiv.appendChild(lender);
               lendDiv.appendChild(name);
@@ -67,9 +72,12 @@
               debtDiv.appendChild(debtor);
               debtDiv.appendChild(otherName);
 
+              whenDiv.appendChild(whenTitle);
+              whenDiv.appendChild(when);
+
               row1.appendChild(iou);
               row1.appendChild(ammount);
-              row1.appendChild(when);
+              row1.appendChild(whenDiv);
 
               row2.appendChild(why);
 
@@ -151,7 +159,7 @@
       moneyForm.addEventListener('submit', addIOUs);
       getForm.addEventListener('submit', getIOUs)
     };
-
+//#DCD0C0
     window.onload = init;
   </script>
 </head>

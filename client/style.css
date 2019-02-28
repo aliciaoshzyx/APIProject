@@ -3,7 +3,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #F4F4F4;
+  background: #DCD0C0;
   font-family: 'Lato', sans-serif;
   color:#F4F4F4;
 }
@@ -11,6 +11,8 @@ html, body {
 #title{
   font-size: 2em;
   background: #373737;
+  border-color:#373737;
+  border-radius:12px;
   margin-left: 10%;
   margin-right:10%;
   text-align: center;
@@ -18,6 +20,7 @@ html, body {
 
 #top {
   margin: 0 auto;
+  color:#373737;
 }
 
 input{
@@ -30,12 +33,13 @@ input{
   width: 600px;
   margin: 0 auto;
   border-style: solid;
-  border-color:black;
+  border-color:#373737;
+  border-radius:12px;
   padding-bottom:1em;
   padding-left: 1em;
-  background:#DCD0C0;
+  background:#C0B283;
   outline-offset:10px;
-  outline-color:#DCD0C0;
+  outline-color:#C0B283;
   outline-width:2em;
 }
 
@@ -44,7 +48,7 @@ input{
   margin-top: 1em;
   margin-left:500px;
   border-radius:12px;
-  border: 2px solid #C0B283;
+  border: 2px solid #373737;
   transition-duration: 0.4s;
   
 }
@@ -88,7 +92,7 @@ form input, form label{
 input[type=text], input[type=number], input[type=date]{
   border: none;
   border-bottom: 2px solid black;
-  background: #DCD0C0; 
+  background: #C0B283; 
 }
 
 input[type=text]:focus, input[type=number]:focus, input[type=date]:focus{
@@ -108,7 +112,7 @@ input[type=date]{
 }
 
 #content {
-  margin-top: 100px;
+  margin-top: 1em;
   font-size: 2em;
 }
 #content{
@@ -157,12 +161,31 @@ input[type=date]{
 
 }
 
-#whenBox{
+#whenDiv{
   flex-grow: 1;
   background: #C0B283;
   padding-top:10px;
   margin: 7px;
   border-radius:12px;
+}
+
+#whenBox{
+  margin-top:-0.4em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+#whenTitle{
+  font-size: 0.5em;
+  text-align:left;
+  padding-left:10px;
+  margin:0;
+  margin-top: -0.25em;
 }
 
 #row2{
