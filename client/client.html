@@ -133,7 +133,7 @@
       }
       const formData = `name=${nameField.value}
       &oname=${oNameField.value}&ammount=${ammountField.value}
-      &when=${dateField.value}&why=${whyField.value}`;
+      &when=${dateField.value}&why=${whyField.value}&sort=${sortField.value}`
 
       //send ajax request
       xhr.send(formData);
@@ -188,12 +188,18 @@
       <input type="submit" value="Add IOU" />
     </form>
     <form id="getForm" action="/getIOUs" method="get">
+      <select id="sortField">
+        <option selected value="dateAdded">Default</option>
+        <option value="ammount">Ammount low to high</option>
+        <option value="alphabetical">Alphabetical by name</option>
+      </select>
       <select id='urlField'>
         <option selected value='/getIOUs'>/getIOUs</option>
       </select>
       <select id="methodSelect">
         <option selected value="get">GET</option>
       </select>
+      
       <input type="submit" value="Get IOUs" />
     </form>
   </section>

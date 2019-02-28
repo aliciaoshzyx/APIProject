@@ -2,6 +2,9 @@ const IOUs = {
   "Ticket":{"why":"Ticket","name":"Bob","otherName":"Adrian","ammount":"3","when":"Anytime"},
 };
 
+const IOUscopy ={
+
+}
 // function to respond with a json object
 // takes request, response, status code and object to send
 const respondJSON = (request, response, status, object) => {
@@ -33,12 +36,22 @@ const respondJSONMeta = (request, response, status) => {
 
 // get user object
 // should calculate a 200
-const getIOUs = (request, response) => {
+const getIOUs = (request, response, body) => {
   // json object to send
   const responseJSON = {
     message: 'Success',
     IOUs,
   };
+
+  if(body.sort == dateAdded){
+
+  }else if(body.sort == ammount){
+
+  } else if (body.sort == alphabetical){
+
+  } else {
+    
+  }
 
   // return 200 with message
   return respondJSON(request, response, 200, responseJSON);
