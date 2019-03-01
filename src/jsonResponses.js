@@ -43,7 +43,7 @@ const getIOUs = (request, response, body) => {
     IOUs,
   };
 
-  if(body.sort == dateAdded){
+  /*if(body.sort == dateAdded){
 
   }else if(body.sort == ammount){
 
@@ -52,7 +52,7 @@ const getIOUs = (request, response, body) => {
   } else {
     
   }
-
+*/
   // return 200 with message
   return respondJSON(request, response, 200, responseJSON);
 };

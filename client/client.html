@@ -9,12 +9,13 @@
     const handleResponse = (xhr, parseResponse) => {
 
       const content = document.querySelector('#content');
+      const messages = document.querySelector('#messages')
       content.innerHTML = "";
       
       //if its JSON
       if (xhr.status == 204){
         
-      }  else if(parseResponse){
+      }   else if(parseResponse){
           const obj = JSON.parse(xhr.response);
           if(obj.IOUs){
             console.log(JSON.stringify(obj.IOUs));
@@ -92,6 +93,11 @@
             content.appendChild(div);
           }
           
+          }
+          else {
+            let p = document.createElement('p');
+            p.textContent = obj.message + ". Please try again.";
+            messages.appendChild(p);
           }
       } else {
         console.log('recieved');
@@ -202,6 +208,9 @@
       
       <input type="submit" value="Get IOUs" />
     </form>
+  </section>
+  <section id="messages">
+
   </section>
   <section id="content">
   </section>
