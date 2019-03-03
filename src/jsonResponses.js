@@ -1,10 +1,9 @@
 const IOUs = {
-  "Ticket":{"why":"Ticket","name":"Bob","otherName":"Adrian","ammount":"3","when":"Anytime"},
+  Ticket: {
+    why: 'Ticket', name: 'Bob', otherName: 'Adrian', ammount: '3', when: 'Anytime',
+  },
 };
 
-const IOUscopy ={
-
-}
 // function to respond with a json object
 // takes request, response, status code and object to send
 const respondJSON = (request, response, status, object) => {
@@ -38,21 +37,27 @@ const respondJSONMeta = (request, response, status) => {
 // should calculate a 200
 const getIOUs = (request, response, body) => {
   // json object to send
-  const responseJSON = {
-    message: 'Success',
+  let responseJSON = {
+    message: 'Retrieved Successfully',
     IOUs,
   };
 
-  /*if(body.sort == dateAdded){
-
-  }else if(body.sort == ammount){
-
-  } else if (body.sort == alphabetical){
-
-  } else {
-    
+  if (!body.sort) {
+    return respondJSON(request, response, 200, responseJSON);
+  } if (IOUs[body.sort]) {
+    responseJSON = {
+      message: 'Success',
+      IOUS: IOUs[body.sort],
+      
+    };
+    return respondJSON(request, response, 200, responseJSON);
+  } if (!IOUs[body.sort]) {
+    responseJSON = {
+      message: 'No IOU found',
+    };
+    return respondJSON(request, response, 400, responseJSON);
   }
-*/
+
   // return 200 with message
   return respondJSON(request, response, 200, responseJSON);
 };
@@ -83,16 +88,13 @@ const addIOU = (request, response, body) => {
   } else {
     IOUs[body.why] = {};
   }
-  
+
   IOUs[body.why].why = body.why;
   IOUs[body.why].name = body.name;
   IOUs[body.why].otherName = body.oname;
   IOUs[body.why].ammount = body.ammount;
-  if(body.when !== "")
-    IOUs[body.why].when = body.when;
-  else
-    IOUs[body.why].when = "Anytime"; //default for if date is not given
-  
+  if (body.when !== '') { IOUs[body.why].when = body.when; } else { IOUs[body.why].when = 'Anytime'; } // default for if date is not given
+
   if (responseCode === 201) {
     responseJSON.id = 'Success';
     responseJSON.message = 'Created Successfully';

@@ -22,7 +22,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const onRequest = (request, response) => {
   // parse url into individual parts and return those
   const parsedUrl = url.parse(request.url);
-
+  const params = query.parse(parsedUrl.query);
   switch (request.method) {
     case 'GET':
       if (parsedUrl.pathname === '/') {
@@ -33,7 +33,7 @@ const onRequest = (request, response) => {
         htmlHandler.getCSS(request, response);
       } else if (parsedUrl.pathname === '/getIOUs') {
         // if get users, send user object back
-        jsonHandler.getIOUs(request, response);
+        jsonHandler.getIOUs(request, response, params);
       } else {
         // if not found, send 404 message
         jsonHandler.notFound(request, response);

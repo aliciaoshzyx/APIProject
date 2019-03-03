@@ -179,7 +179,7 @@ input[type=date]{
 }
 
 #whenBox{
-  margin-top:-0.4em;
+  margin-top:-0.2em;
 }
 
 input:-webkit-autofill,
@@ -195,10 +195,6 @@ input:-webkit-autofill:active {
   padding-left:10px;
   margin:0;
   margin-top: -0.25em;
-}
-
-#row2{
-
 }
 
 #whyBox{
@@ -250,7 +246,7 @@ input:-webkit-autofill:active {
   margin:5px;
 }
 
-#messages p {
+#messages{
   color: #373737;
   text-align:center;
 }
